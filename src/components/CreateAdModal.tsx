@@ -17,9 +17,32 @@ const CreateAdModal = () => {
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState<boolean>(false);
   useEffect(() => {
-    axios("http://localhost:3333/games").then((response) =>
-      setGames(response.data)
-    );
+    setGames([
+      {
+        id: "d36e8baf-bf4c-4ecd-ab9e-9691db2460ad",
+        title: "League of Legends",
+      },
+      {
+        id: "aae6412f-9191-41ad-ad23-e6800be9048a",
+        title: "Apex Legends",
+      },
+      {
+        id: "6a6f8513-f1a2-41c0-a314-6d46a7e5c2a2",
+        title: "Fortnite",
+      },
+      {
+        id: "c6037329-c644-42e0-9d61-4da5bc2643b2",
+        title: "Valorant",
+      },
+      {
+        id: "d65a2e74-696d-4b88-b962-362b158d9d37",
+        title: "CS:GO",
+      },
+      {
+        id: "d427e0a9-47fc-4940-9456-78828afd8a92",
+        title: "Dota 2",
+      },
+    ]);
   }, []);
 
   async function handleCreateAd(event: FormEvent) {
@@ -32,21 +55,23 @@ const CreateAdModal = () => {
     }
 
     //TODO: Validações
-
-    try {
-      await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
-        name: data.name,
-        yearsPlaying: Number(data.yearsPlaying),
-        discord: data.discord,
-        weekDays: weekDays.map(Number),
-        hoursStart: data.hoursStart,
-        hourEnd: data.hourEnd,
-        useVoiceChannel: useVoiceChannel,
-      });
-      alert("Anúncio criado com sucesso!");
-    } catch (error) {
-      alert("Erro ao criar o anúncio...");
-    }
+    alert(
+      "Isso é apenas um exemplo da aplicação e suas funcionalidades, porém, as funções sugeridas não estão sendo executadas..."
+    );
+    // try {
+    //   await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
+    //     name: data.name,
+    //     yearsPlaying: Number(data.yearsPlaying),
+    //     discord: data.discord,
+    //     weekDays: weekDays.map(Number),
+    //     hoursStart: data.hoursStart,
+    //     hourEnd: data.hourEnd,
+    //     useVoiceChannel: useVoiceChannel,
+    //   });
+    //   alert("Anúncio criado com sucesso!");
+    // } catch (error) {
+    //   alert("Erro ao criar o anúncio...");
+    // }
   }
 
   return (
